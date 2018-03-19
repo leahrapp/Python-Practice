@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="jumbotron"><h1 class="display-3">Please Register </h1></div>
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-4">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {{message}}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+	
+    {% block body %}{% endblock %}
+
+    <form action="/input" method="post">
+        <h3>Add a Friend</h3>
+        <label for="first-name">First Name: </label>
+        <input type="text" name="first_name" id="first-name" class="form-control" />
+        <label for="last-name">Last Name: </label>
+        <input type="text" name="last_name" id="last-name" class="form-control" />
+        <label for="email">Email: </label>
+        <input type="email" name="email" id="email" class="form-control" />
+        <label for="password">Password: </label>
+        <input type="password"name="password" id="password" class="form-control" />
+         <label for="confirm_password">Confirm Password:</label>
+        <input type="password"name="confirm_password" id="confirm_password" class="form-control" />
+        <button type="submit" value="Submit" class="btn btn-primary">Add Friend</button>
+
+    </form>
+    
+    
+
+   
+
+
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+   
+</div>
+<div class="col-md-4"></div>
+</div>
+</body>
+</html>
