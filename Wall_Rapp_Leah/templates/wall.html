@@ -1,0 +1,35 @@
+{%extends"layout.html"%}
+{% block body%}
+<div class="jumbotron">Welcome to the Wall{{session["user_name"]}}</div>
+
+<form action="/message" method="POST">
+<textarea name="message" id="textarea" class="form-control"></textarea>
+    <button type="submit" value="Submit">Submit</button>
+    
+</form>    
+    
+ <h1>Messages</h1>   
+ <div id="previous-message">
+     {%for messages in messages_arr%}
+
+
+     <h2>{{messages.user_name}}</h2>
+     <h3>{{messages.time}}</h3>
+     <p>{{messages.message}}</p>
+     
+     <h4>Comments</h4>
+     {%for comments  in messages.comments %}
+
+     {{comments.comment}}
+     {%endfor%}
+     <form action="/comment" method="POST">
+         <textarea name="comment" id="textarea" class="form-control"></textarea>
+         <input name="message_id" style="display:none" value="{{messages.id}}" />
+         <button type="submit" value="Submit">Submit</button>
+
+     </form>
+
+     {%endfor%}
+
+ </div>
+{%endblock%}
