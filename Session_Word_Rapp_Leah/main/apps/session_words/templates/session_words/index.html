@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+   
+        <form action="session_words/add_word" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="word">Gimme a word</label>
+                <input type="text" name="word" class="form-control"   placeholder="Type in a cool word">
+                <small class="form-text text-muted">Type in a special word</small>
+            </div>
+
+       
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label >What color would you like this word to be?</label>
+            
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="radio"  autocomplete="off" value="red"> Red
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="radio"  autocomplete="off" value="green"> Green
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="radio"  autocomplete="off" value="blue"> Blue
+                </label>
+            </div>
+            
+        
+            <div class="form-group">
+                <div class="btn-group-toggle" data-toggle="buttons">
+                    <label>Would you like your word to be <b>bold</b>?</label>
+                    <label class="btn btn-secondary active">
+                        <input type="checkbox" name="bold" checked autocomplete="off" value="bold"> Bold
+                    </label>
+                </div>
+            </div>
+       
+
+            <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+        </form>
+        
+
+
+
+   
+    </div>
+    <div class="col-md-4">
+        <form action="session_words/clear_word" method="post">
+            {% csrf_token %}
+
+            <button type="submit" value="Submit" class="btn btn-primary">Clear Session</button>
+
+
+            <p></p>
+
+
+        </form>
+
+
+    </div>
+    <div class="col-md-2"></div>
+</div>
+    <div class="row">
+        
+        <div class="col-md-3 right"></div><div class="col-md-6 center">
+            
+            {%for row in request.session.row%}
+              
+              <h4 style="color:{{row.color}}; font-weight:{{row.font_weight}}; display:inline">{{row.word}}</h4><h3 style="display: inline">add at {{row.time}}</h3>
+              
+              
+              {%endfor%}
+              
+              
+              
+              
+
+        </div>   <div class="col-md-3 left"></div>
+        
+        
+
+    </div>
+    
+</div>
+</body>
+
+</html>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
