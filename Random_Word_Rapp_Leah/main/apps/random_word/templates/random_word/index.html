@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+   
+    <!-- The line above tells Django to be ready to listen for static files -->
+    
+    {% load staticfiles %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'random_word/style.css' %}" />
+</head>
+<body>
+<div>
+<h1 class="box">Rando Word: {{request.session.word}}</h1>
+    <div class="box">
+        {{request.session.counter}}
+        
+    </div>
+
+</div>
+</body>
+</html>
