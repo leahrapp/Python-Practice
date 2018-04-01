@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="../static/css/bootstrap.css" />
+    <link rel="stylesheet" href="../static/css/style.css">
+
+
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-1">Find some gold</h1>
+    </div>
+    <div class="top-row row">
+       
+
+            <div class="col-1"></div>
+            <div class="col-2">
+                <h3>Your Gold:  </h3></div>
+        <div class="col-1"><p>9{{all_dat_gold}}</p></div>
+        <div class="col-8"></div>
+                </div>
+           
+            
+   
+    <div class="middle-row col-md-12 row">
+        
+        <div class="col-md-2 card">
+            <form action="process_money" method="post">
+
+                <h2 class="card-title">Farm </h2>
+
+                <div class="card-body">
+                    <h5>Get some gold</h5>
+                    <p class="card-text">Earn 10 - 20 gold peices </p>
+                    <input type="text" name="action" style="display: none" value="farm">
+                    <button type="submit" class="btn btn-primary">Get Gold</button>
+                </div>
+
+
+
+            </form>
+        </div>
+
+
+        <div class="col-md-2 card">
+            <form action="process_money" method="post">
+
+                <h2 class="card-title">Cave </h2>
+
+                <div class="card-body">
+                    <h5>Get some gold</h5>
+                    <p class="card-text">Earn 5-10 gold peices </p>
+                    <input type="text" name="action" style="display: none" value="cave">
+                    <button type="submit" class="btn btn-primary">Get Gold</button>
+                </div>
+
+
+
+            </form>
+        </div>
+        <div class="col-md-2 card">
+            <form action="process_money" method="post">
+
+                <h2 class="card-title">House</h2>
+
+                <div class="card-body">
+                    <h5>Get some gold</h5>
+                    <p class="card-text">Earn 2-5 gold peices </p>
+                    <input type="text" name="action" style="display: none" value="house">
+                    <button type="submit" class="btn btn-primary">Get Gold</button>
+                </div>
+
+
+
+            </form>
+        </div>
+
+
+
+        <div class="col-md-2 card">
+            <form action="process_money" method="post">
+
+                <h2 class="card-title">Casino </h2>
+
+                <div class="card-body">
+                    <h5>Get some gold</h5>
+                    <p class="card-text">EBe carefull! This will either add or take up to 50 gold peices </p>
+                    <input type="text" name="action" style="display: none" value="casino">
+                    <button type="submit" class="btn btn-primary">Get Gold</button>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        {% for win in winnings%}
+        <p>{{win}}</p>
+        {%endfor%}
+    </div>
+    <div class="col-md-4"></div>
+
+</div>
+</div>
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="../static/scripts/jquery.js" crossorigin="anonymous"></script>
+<script src="../static/scripts/utils.js" crossorigin="anonymous"></script>
+<script src="../static/scripts/tether.js" crossorigin="anonymous"></script>
+<script src="../static/scripts/bootstrap.js" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
