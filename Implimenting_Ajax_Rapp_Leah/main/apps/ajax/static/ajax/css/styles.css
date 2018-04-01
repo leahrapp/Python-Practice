@@ -1,0 +1,12 @@
+﻿
+.card {
+    border-color: black;
+    margin: 4%; 
+    height: 25vh;
+    display: inline-block; 
+
+}
+
+textarea {
+    height: 25vh;
+}

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'ajax/css/styles.css' %}">
+
+</head>
+<body>
+<div class="container">
+<div class="jumbotron">
+    <h1 class="display-3">My Posts</h1>
+</div>
+<div class="row">
+    <div class="col-md-12" id="note-div"></div>
+
+
+</div>
+
+
+
+
+<form action="/" method="post" id="submit-this-note">
+    {% csrf_token %}
+    Enter your note
+    <textarea class="form-control col-md-3" name="note" id="written-note"></textarea>
+
+    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+
+<script>
+    $('#submit-this-note').submit(function(e) {
+        e.preventDefault()
+        console.log('Sending Ajax request to', $(this).attr('action'));
+        console.log('Submitting the following data', $(this).serialize());
+        $.ajax({
+            url: $(this).attr('action'),
+            method: 'post',
+            data: $(this).serialize(),
+            success: function(data) { /* What code should we run when the server responds? */
+
+                console.log(data)
+                $('#note-div').append(
+                    '<div class="card col-md-3 ><div class="card-body">' + data + '</div></div>');
+
+
+            }
+        })
+    });
+</script>
+
+
+</body>
+
+</html>
