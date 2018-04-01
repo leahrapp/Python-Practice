@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="jumbotron"><h1 class="display-3">These are your friends </h1></div>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form action="{% url 'my_save_edit' id=context.id %}" method="post">
+            {% csrf_token %}
+            <h3>Edit Friend</h3>
+            <label for="first-name">First Name</label>
+            <input name="first_name" id="first-name" class="form-control" value="{{context.first_name}}" />
+            <label for="last-name">Last Name</label>
+            <input name="last_name" id="last-name" class="form-control" value="{{context.last_name}}" />
+            <label for="email">Email</label>
+            <input type="email" name="email" id="occupation" class="form-control" value="{{context.email}}" />
+            <div>
+                <button type="submit" value="Submit" class="btn btn-primary">Save Friend</button>
+            </div>
+        </form>
+
+
+
+
+
+
+
+
+
+
+        <!-- jQuery first, then Tether, then Bootstrap JS. -->
+
+    </div>
+    <div class="col-md-4"></div>
+</div>
+</body>
+</html>
